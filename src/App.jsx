@@ -61,7 +61,7 @@ function CanchaDashboard({ canchas }) {
               <p className=" text-1xl mx-2 lg:mx-5 lg:text-xs sm:w-64  lg:w-60">
                 {item.description}
               </p>
-              <p className="font-bold text-2xl md:-my-1  ">
+              <p className="font-bold text-2xl md:-my-2 sm:-my-2 lg:-my-1">
                 ${item.value} / hora
               </p>
             </div>
