@@ -51,7 +51,7 @@ function CanchaDashboard() {
       <FilterCanchas />
       <div className=" container flex  justify-around ">
         <div
-          className={` flex-grow  overflow-y-scroll grid  auto-rows-[300px] p-3 gap-4 h-4/6  ${
+          className={` flex-grow  overflow-y-scroll grid auto-rows-[300px] p-3 gap-4 h-4/6  ${
             showItem ? styleOnSlide : styleOffSlide
           } `}
         >
