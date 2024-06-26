@@ -1,5 +1,11 @@
-import { createRoot } from "react-dom/client";
+import ReactDOM from "react-dom/client";
+import React from "react";
 import { App } from "./src/App";
 import "./index.css";
-const root = createRoot(document.getElementById("app"));
-root.render(<App />);
+import { CanchaProvider } from "./src/context/cancha";
+
+ReactDOM.createRoot(document.getElementById("app")).render(
+  <CanchaProvider>
+    <App />
+  </CanchaProvider>
+);

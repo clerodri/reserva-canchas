@@ -1,0 +1,24 @@
+.reserva {
+  @apply flex flex-col bg-slate-200
+   rounded-2xl items-center gap-5 p-2;
+}
+.reserva > div > h2 {
+  @apply text-3xl font-serif text-amber-900 
+  font-bold;
+}
+
+.reserva > div > p {
+  @apply font-normal text-sm font-extrabold;
+}
+
+.reserva > div > button {
+  @apply p-3 bg-slate-400 rounded-xl border-2;
+}
+
+.header {
+  @apply flex justify-between w-full p-1;
+}
+
+.horarios {
+  @apply w-72 h-56 overflow-y-auto border border-gray-700 p-3 bg-gray-50 rounded-lg;
+}

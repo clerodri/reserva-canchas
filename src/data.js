@@ -4,30 +4,31 @@ export const data = [
     id_cancha: "1",
     description: "This is the description for Object 1",
     value: 10,
+    disponible: "false",
     horarios: [
       {
         id_horario: "1",
-        h_inicio: "14:00",
-        h_fin: "15:00",
+        h_inicio: "16:00",
+        h_fin: "17:00",
         disponible: "false",
       },
       {
         id_horario: "2",
         h_inicio: "16:00",
         h_fin: "18:00",
-        disponible: "true",
+        disponible: "false",
       },
       {
         id_horario: "3",
         h_inicio: "22:00",
         h_fin: "23:30",
-        disponible: "true",
+        disponible: "false",
       },
       {
         id_horario: "23",
         h_inicio: "20:00",
         h_fin: "23:30",
-        disponible: "true",
+        disponible: "false",
       },
     ],
   },
@@ -36,6 +37,7 @@ export const data = [
     id_cancha: "2",
     description: "This is the description for Object 2",
     value: 20,
+    disponible: "true",
     horarios: [
       {
         id_horario: "4",
@@ -47,7 +49,7 @@ export const data = [
         id_horario: "5",
         h_inicio: "16:00",
         h_fin: "18:00",
-        disponible: "false",
+        disponible: "true",
       },
       {
         id_horario: "6",
@@ -68,6 +70,7 @@ export const data = [
     id_cancha: "3",
     description: "This is the description for Object 3",
     value: 30,
+    disponible: "true",
     horarios: [
       {
         id_horario: "7",
@@ -79,7 +82,7 @@ export const data = [
         id_horario: "8",
         h_inicio: "11:00",
         h_fin: "12:00",
-        disponible: "true",
+        disponible: "false",
       },
       {
         id_horario: "9",
@@ -100,6 +103,7 @@ export const data = [
     id_cancha: "4",
     description: "This is the description for Object 4",
     value: 40,
+    disponible: "false",
     horarios: [
       {
         id_horario: "10",
@@ -123,230 +127,6 @@ export const data = [
         id_horario: "36",
         h_inicio: "09:00",
         h_fin: "11:30",
-        disponible: "false",
-      },
-    ],
-  },
-  {
-    name: "Object 5",
-    id_cancha: "5",
-    description: "This is the description for Object 5",
-    value: 50,
-    horarios: [
-      {
-        id_horario: "13",
-        h_inicio: "14:00",
-        h_fin: "15:00",
-        disponible: "false",
-      },
-      {
-        id_horario: "14",
-        h_inicio: "16:00",
-        h_fin: "18:00",
-        disponible: "true",
-      },
-      {
-        id_horario: "15",
-        h_inicio: "22:00",
-        h_fin: "23:30",
-        disponible: "true",
-      },
-      {
-        id_horario: "39",
-        h_inicio: "15:00",
-        h_fin: "16:30",
-        disponible: "true",
-      },
-    ],
-  },
-  {
-    name: "Object 5",
-    id_cancha: "5",
-    description: "This is the description for Object 5",
-    value: 50,
-    horarios: [
-      {
-        id_horario: "13",
-        h_inicio: "14:00",
-        h_fin: "15:00",
-        disponible: "false",
-      },
-      {
-        id_horario: "14",
-        h_inicio: "16:00",
-        h_fin: "18:00",
-        disponible: "true",
-      },
-      {
-        id_horario: "15",
-        h_inicio: "22:00",
-        h_fin: "23:30",
-        disponible: "true",
-      },
-      {
-        id_horario: "39",
-        h_inicio: "15:00",
-        h_fin: "16:30",
-        disponible: "true",
-      },
-    ],
-  },
-  {
-    name: "Object 5",
-    id_cancha: "5",
-    description: "This is the description for Object 5",
-    value: 50,
-    horarios: [
-      {
-        id_horario: "13",
-        h_inicio: "14:00",
-        h_fin: "15:00",
-        disponible: "false",
-      },
-      {
-        id_horario: "14",
-        h_inicio: "16:00",
-        h_fin: "18:00",
-        disponible: "true",
-      },
-      {
-        id_horario: "15",
-        h_inicio: "22:00",
-        h_fin: "23:30",
-        disponible: "true",
-      },
-      {
-        id_horario: "39",
-        h_inicio: "15:00",
-        h_fin: "16:30",
-        disponible: "true",
-      },
-    ],
-  },
-  {
-    name: "Object 5",
-    id_cancha: "5",
-    description: "This is the description for Object 5",
-    value: 50,
-    horarios: [
-      {
-        id_horario: "13",
-        h_inicio: "14:00",
-        h_fin: "15:00",
-        disponible: "false",
-      },
-      {
-        id_horario: "14",
-        h_inicio: "16:00",
-        h_fin: "18:00",
-        disponible: "true",
-      },
-      {
-        id_horario: "15",
-        h_inicio: "22:00",
-        h_fin: "23:30",
-        disponible: "true",
-      },
-      {
-        id_horario: "39",
-        h_inicio: "15:00",
-        h_fin: "16:30",
-        disponible: "true",
-      },
-    ],
-  },
-  {
-    name: "Object 5",
-    id_cancha: "5",
-    description: "This is the description for Object 5",
-    value: 50,
-    horarios: [
-      {
-        id_horario: "13",
-        h_inicio: "14:00",
-        h_fin: "15:00",
-        disponible: "false",
-      },
-      {
-        id_horario: "14",
-        h_inicio: "16:00",
-        h_fin: "18:00",
-        disponible: "true",
-      },
-      {
-        id_horario: "15",
-        h_inicio: "22:00",
-        h_fin: "23:30",
-        disponible: "true",
-      },
-      {
-        id_horario: "39",
-        h_inicio: "15:00",
-        h_fin: "16:30",
-        disponible: "true",
-      },
-    ],
-  },
-  {
-    name: "Object 5",
-    id_cancha: "5",
-    description: "This is the description for Object 5",
-    value: 50,
-    horarios: [
-      {
-        id_horario: "13",
-        h_inicio: "14:00",
-        h_fin: "15:00",
-        disponible: "false",
-      },
-      {
-        id_horario: "14",
-        h_inicio: "16:00",
-        h_fin: "18:00",
-        disponible: "true",
-      },
-      {
-        id_horario: "15",
-        h_inicio: "22:00",
-        h_fin: "23:30",
-        disponible: "true",
-      },
-      {
-        id_horario: "39",
-        h_inicio: "15:00",
-        h_fin: "16:30",
-        disponible: "true",
-      },
-    ],
-  },
-  {
-    name: "Object 5",
-    id_cancha: "5",
-    description: "This is the description for Object 5",
-    value: 50,
-    horarios: [
-      {
-        id_horario: "13",
-        h_inicio: "14:00",
-        h_fin: "15:00",
-        disponible: "false",
-      },
-      {
-        id_horario: "14",
-        h_inicio: "16:00",
-        h_fin: "18:00",
-        disponible: "false",
-      },
-      {
-        id_horario: "15",
-        h_inicio: "22:00",
-        h_fin: "23:30",
-        disponible: "false",
-      },
-      {
-        id_horario: "39",
-        h_inicio: "15:00",
-        h_fin: "16:30",
         disponible: "false",
       },
     ],

@@ -1,36 +1,66 @@
-import { useState, useEffect, useRef } from "react";
-import { MdCircle } from "react-icons/md";
-import { IoCloseCircleOutline } from "react-icons/io5";
-import { data } from "./data";
+import { useState } from "react";
 import "./App.css";
-
-const styleOffSlide =
-  "grid-cols-1 ms-20 md:grid-cols-2 md:ms-10 lg:grid-cols-3 lg:ms-12 xl:grid-cols-4 xl:ms-0 opacity-1";
-const styleOnSlide =
-  "md:ms-16 lg:grid-cols-2 lg:ms-8  xl:grid-cols-3 xl:ms-20 opacity-20 ";
-const filterStyle =
-  "flex  justify-evenly w-full md:flex-row sm:flex-col sm:gap-5 sm:items-center";
-const filterBtn =
-  "btn-wrapper  bg-gray-300 p-2  h-fit w-fit rounded-xl cursor-pointer border-gray-500 border-2";
-const reservaStyle =
-  "reserva-wrapper text-2xl w-96 flex flex-col gap-2 justify-center items-center h-fit pb-4";
+import { Header } from "./components/Header";
+import { Canchas } from "./components/Canchas";
+import { useCancha } from "./hooks/useCancha.js";
 
 export function App() {
+  // const { state } = useFilterContext();
+  const { canchas } = useCancha();
+  console.log(canchas);
   return (
     <>
-      <header className="flex flex-col items-center  justify-center my-5 bg-slate-200 ">
-        <h1 className="text-5xl font-mono sm:ms-16 ">
-          Reservas de Canchas - CodingBootcamp ESPOL
-        </h1>
-      </header>
-      <main className="flex flex-col ">
-        <CanchaDashboard />
-      </main>
+      <Header />
+      <Canchas canchas={canchas} />
     </>
   );
 }
 
-function CanchaDashboard() {
+function Canchas2({ canchas }) {
+  const [state, setState] = useState({
+    showCancha: false,
+    cancha: {},
+  });
+  const toggleCancha = (item) => {
+    console.log(item);
+    setState((prevState) => ({
+      ...prevState,
+      cancha: item,
+      showCancha: !state.showCancha,
+    }));
+  };
+  const closeReserva = () => {
+    setState((prevState) => ({
+      ...prevState,
+      showCancha: !state.showCancha,
+    }));
+  };
+  return (
+    <main className="canchas">
+      <ul>
+        {canchas.slice(0, 8).map((item) => (
+          <li key={item.id_cancha} onClick={() => toggleCancha(item)}>
+            <div>
+              <MdCircle color="green" size="1.5rem" />
+            </div>
+            <img src="../public/cancha.png" alt="cancha dibujo" />
+            <div>
+              <strong>{item.name}</strong>
+            </div>
+            <div>
+              <span>${item.value} / hora</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+      {state.showCancha && (
+        <Reserva cancha={state.cancha} toggle={closeReserva} />
+      )}
+    </main>
+  );
+}
+
+function Canchas_old({ canchas }) {
   const [showItem, setshowItem] = useState(false);
   const itemRef = useRef(null);
   const [item, setItem] = useState({});
@@ -51,13 +81,13 @@ function CanchaDashboard() {
       <FilterCanchas />
       <div className=" container flex  justify-around ">
         <div
-          className={` flex-grow  overflow-y-scroll grid auto-rows-[300px] p-3 gap-4 h-4/6  ${
+          className={` flex-grow  overflow-y-scroll grid  auto-rows-[300px] p-3 gap-4 h-4/6  ${
             showItem ? styleOnSlide : styleOffSlide
           } `}
         >
-          {data.map((item, i) => (
+          {canchas.slice(0, 5).map((item) => (
             <CanchaItem
-              key={i}
+              key={item.id_cancha}
               item={item}
               showSiderOver={showSiderOver}
               showItem={showItem}
@@ -73,6 +103,7 @@ function CanchaDashboard() {
     </>
   );
 }
+
 function CanchaItem({ index, item, showSiderOver, showItem }) {
   const isDisponible = (item) => {
     return item.horarios.some((horario) => horario.disponible === "true");
@@ -185,3 +216,14 @@ function FilterCanchas() {
     </>
   );
 }
+
+const styleOffSlide =
+  "grid-cols-1 ms-20 md:grid-cols-2 md:ms-10 lg:grid-cols-3 lg:ms-12 xl:grid-cols-4 xl:ms-0 opacity-1";
+const styleOnSlide =
+  "md:ms-16 lg:grid-cols-2 lg:ms-8  xl:grid-cols-3 xl:ms-20 opacity-20 ";
+const filterStyle =
+  "flex  justify-evenly w-full md:flex-row sm:flex-col sm:gap-5 sm:items-center";
+const filterBtn =
+  "btn-wrapper  bg-gray-300 p-2  h-fit w-fit rounded-xl cursor-pointer border-gray-500 border-2";
+const reservaStyle =
+  "reserva-wrapper text-2xl w-96 flex flex-col gap-2 justify-center items-center h-fit pb-4";

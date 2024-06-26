@@ -1,0 +1,14 @@
+.canchas {
+  @apply flex justify-around;
+}
+.canchas ul {
+  @apply grid grid-cols-4 auto-rows-[300px]  gap-5;
+}
+
+.canchas li {
+  @apply flex flex-col items-center gap-1 bg-slate-300 rounded-2xl p-2;
+}
+
+.canchas img {
+  @apply rounded m-1 h-auto w-auto;
+}
