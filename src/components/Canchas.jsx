@@ -2,8 +2,10 @@ import React from "react";
 import { useState, useRef, useEffect } from "react";
 import { MdCircle } from "react-icons/md";
 import { Reserva } from "./Reserva";
+import { useCancha } from "../hooks/useCancha";
 import "../css/Cancha.css";
-export function Canchas({ canchas }) {
+export function Canchas({}) {
+  const { canchas } = useCancha();
   console.log(canchas);
   const [state, setState] = useState({
     showCancha: false,

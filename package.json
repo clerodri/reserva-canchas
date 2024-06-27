@@ -10,8 +10,10 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.19",
+    "bootstrap": "^5.3.3",
     "eslint": "^8.57.0",
     "postcss": "^8.4.38",
+    "react-bootstrap": "^2.10.3",
     "react-icons": "^5.2.1",
     "standard": "^17.1.0",
     "tailwindcss": "^3.4.4",
@@ -20,7 +22,8 @@
   "dependencies": {
     "@vitejs/plugin-react": "4.3.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.52.0"
   },
   "eslintConfig": {
     "extends": [

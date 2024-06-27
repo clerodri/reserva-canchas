@@ -43,7 +43,6 @@ function Horarios({ horarios }) {
   };
   return (
     <>
-      <h2>Seleccion de Horarios</h2>
       <div className="horarios">
         {horarios.map((horario, index) => (
           <div
