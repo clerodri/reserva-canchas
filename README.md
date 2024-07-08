@@ -2,6 +2,11 @@
 
 # Webapp - Reservas de Canchas
 
+# STEPS TO RUN:
+
+1. cd frontend -> npm run build
+2. cd .. -> python manage.py runserver
+
 ## Visualizacion de canchas
 
 ![canchas](https://github.com/clerodri/reserva-canchas/assets/72469484/6a8ddb12-6651-4574-85d5-97adfc25d804)
