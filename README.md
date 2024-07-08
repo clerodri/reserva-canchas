@@ -1,6 +1,6 @@
 # Cooding Bootcamps - ESPOL
 
-# Webapp - Reservas de Canchas
+# Webapp - Reservas de Canchas (Django + React Vite)
 
 # STEPS TO RUN:
 
@@ -8,14 +8,34 @@
 2. copy all files from frontend/images folder to frontend/dist folder
 3. cd base directory execute -> python manage.py runserver
 
-## Visualizacion de canchas
+## Login y Registro de usuario
 
-![canchas](https://github.com/clerodri/reserva-canchas/assets/72469484/6a8ddb12-6651-4574-85d5-97adfc25d804)
+![image](https://github.com/clerodri/reserva-canchas/assets/72469484/b9fe06fd-c758-4b39-b099-6d2f077eb2e2)
 
-## Reservar una Cancha
+## Home page
 
-![reserva](https://github.com/clerodri/reserva-canchas/assets/72469484/d8c7656f-730e-4082-86af-58fac5c46ba9)
+![image](https://github.com/clerodri/reserva-canchas/assets/72469484/0e6e3cb6-e142-430b-b473-41b696a02950)
 
-## Filtrar por hora o disponibilidad
+## Reservar - cancha no disponible
 
-![Filtrado](https://github.com/clerodri/reserva-canchas/assets/72469484/c8c15e41-5521-45fc-913c-df0ff240096e)
+![image](https://github.com/clerodri/reserva-canchas/assets/72469484/9c68e187-052b-480b-930a-63ca24cdc336)
+
+## Informacion de la reserva
+
+![image](https://github.com/clerodri/reserva-canchas/assets/72469484/56dd5349-2a96-4448-9666-999be0518d32)
+
+## Historial de reservas
+
+![image](https://github.com/clerodri/reserva-canchas/assets/72469484/15290e4a-64ea-48ed-91c1-d91346667ed8)
+
+## Historial de pagos
+
+![image](https://github.com/clerodri/reserva-canchas/assets/72469484/3c4ec20f-bb27-4db7-bce8-3469c3338199)
+
+## Filtrar por horario.
+
+![image](https://github.com/clerodri/reserva-canchas/assets/72469484/09a48645-f0c4-43fd-9afe-5b861625be71)
+
+## Orderna por Disponibilidad o Precio
+
+![image](https://github.com/clerodri/reserva-canchas/assets/72469484/6014e310-e31a-4a8d-8525-456185e9fd3e)
