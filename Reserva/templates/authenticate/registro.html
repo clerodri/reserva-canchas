@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reserva de Canchas</title>
+  </head>
+  <body>
+    <div>
+      {% for message in messages%}
+      <div>{{message}}</div>
+      {% endfor %}
+      <br />
+      <br />
+      <h1>Registro</h1>
+      <form method="POST">
+        {% csrf_token %} {{registro_form}}
+        <br />
+        <button type="submit">Registrarme</button>
+      </form>
+    </div>
+  </body>
+</html>

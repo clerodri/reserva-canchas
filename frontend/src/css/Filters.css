@@ -1,0 +1,15 @@
+.filters {
+  @apply flex justify-around;
+}
+
+.filters div {
+  @apply flex flex-col items-center justify-center my-2;
+}
+
+.filters > div > input {
+  @apply border-gray-500 bg-gray-100 border rounded-lg p-1;
+}
+
+.filters div > button {
+  @apply bg-slate-400 rounded p-2 font-serif text-xl;
+}
