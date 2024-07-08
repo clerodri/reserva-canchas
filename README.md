@@ -5,7 +5,8 @@
 # STEPS TO RUN:
 
 1. cd frontend -> npm run build
-2. cd .. -> python manage.py runserver
+2. copy all files from frontend/images folder to frontend/dist folder
+3. cd base directory execute -> python manage.py runserver
 
 ## Visualizacion de canchas
 
