@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { CgDollar } from "react-icons/cg";
 import { format } from "date-fns";
-const BASE_URL = "http://localhost:8000/pagos";
+
 function Pagos() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchPagos = async () => {
     try {
-      const res = await fetch(BASE_URL);
+      const res = await fetch(`${import.meta.env.VITE_BASE_URL_PAGOS}`);
       const pagosData = await res.json();
 
       const fetchReservaDetails = pagosData.map(async (pago) => {
         console.log(pago);
         const reservaRes = await fetch(
-          `http://localhost:8000/reservas/${pago.reserva}`
+          `${import.meta.env.VITE_BASE_URL_RESERVAS}${pago.reserva}`
         );
         const reservaData = await reservaRes.json();
-        console.log(reservaData);
         return {
           hora_inicio: reservaData.horario.hora_inicio,
           hora_fin: reservaData.horario.hora_fin,
@@ -43,8 +42,6 @@ function Pagos() {
   if (isLoading) {
     return <p>Loading...</p>;
   }
-
-  console.log(data);
 
   return (
     <>

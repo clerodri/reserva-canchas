@@ -1,11 +1,15 @@
 from django.urls import path
-from .views import login_request, logout_request, registro_request, current_user
+from .views import *
 
 
 
 urlpatterns = [
-    # path("login_user", login_request, name='login'),
-    # path('logout_user', logout_request, name='logout'),
-    # path("registro_user", registro_request, name="registro"),
-    # path("current_user", current_user, name="current_user"),
+    path("horariosfull/<int:id_cancha>", getHorariosByCanchaFull, name="getHorariosByCanchaFull"),
+    path("canchas",getCanchas, name="getCanchas"),
+    path("user/<int:persona_id>",getUserDataById, name="getUserDataById"),
+    path("info-reservas",reservas, name="reservas"),
+    path('pagos', PagoCreateView.as_view(), name='create-pago'),
+    path('', ReservaCreateView.as_view(), name='reservas'),
+    path('reserva', ReservaCreateView.as_view(), name='add-reserva'),
+    path('<int:pk>', ReservaDetailView.as_view(), name='detail-reserva'),
 ]

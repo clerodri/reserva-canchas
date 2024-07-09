@@ -3,7 +3,7 @@ import { FaCircleInfo } from "react-icons/fa6";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { useCancha } from "../hooks/useCancha";
 
-const BASE_URL = "http://localhost:8000/user";
+const BASE_URL = "http://localhost:8000/reservas/user";
 export function ModalReserva({ idxSelected }) {
   const [show, setShow] = useState(false);
   console.log("Modal Rendering");

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { AiFillDollarCircle } from "react-icons/ai";
 import axiosInstance from "./axiosInstance";
-const BASE_URL = "http://localhost:8000/info-reservas";
+
 function Reservas() {
   const [data, setData] = useState([]);
   const fetchReservas = async () => {
-    await fetch(BASE_URL)
+    await fetch(`${import.meta.env.VITE_BASE_URL_RESERVAS}info-reservas`)
       .then((res) => res.json())
       .then((data) => setData(data))
       .catch((error) => console.log("Error fetching data: ", error));
@@ -13,7 +13,6 @@ function Reservas() {
   useEffect(() => {
     fetchReservas();
   }, []);
-  console.log("state data", data);
 
   const handlePayClick = async (item) => {
     if (item.id === null) return;

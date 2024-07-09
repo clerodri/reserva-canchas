@@ -48,7 +48,7 @@ function useCanchaReducer() {
   };
 
   const fetchCanchas = (signal) => {
-    fetch("http://localhost:8000/canchas", { signal })
+    fetch(`${import.meta.env.VITE_BASE_URL_RESERVAS}canchas`, { signal })
       .then((response) => response.json())
       .then((data) => dispatch({ type: "FETCH-SUCCESS", payload: data }))
       .catch((error) => {
@@ -59,7 +59,7 @@ function useCanchaReducer() {
   };
 
   const fetchReservas = (signal) => {
-    fetch("http://localhost:8000/reservas", { signal })
+    fetch(`${import.meta.env.VITE_BASE_URL_RESERVAS}`, { signal })
       .then((response) => response.json())
       .then((data) =>
         dispatch({ type: "FETCH-RESERVAS-SUCCESS", payload: data })
