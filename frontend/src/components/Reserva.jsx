@@ -37,7 +37,7 @@ export function Reserva({ onClose }) {
 
     try {
       const res = await axiosInstance.post(
-        "/reservas",
+        "reservas/reserva",
         JSON.stringify(myReserva)
       );
       console.log(res);

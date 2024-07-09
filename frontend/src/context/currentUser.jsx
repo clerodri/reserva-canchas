@@ -8,7 +8,7 @@ export function UserProvider({ children }) {
   useEffect(() => {
     const fetchDataUser = async () => {
       try {
-        await fetch("http://127.0.0.1:8000/reserva/current_user")
+        await fetch("http://127.0.0.1:8000/usuarios/current_user")
           .then((res) => res.json())
           .then((data) => setCurrentUser(data));
       } catch (error) {

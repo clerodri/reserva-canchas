@@ -43,8 +43,8 @@ export function Header({ isModalOpen }) {
 function LogoutButton() {
   const handleLogout = async () => {
     try {
-      await axiosInstance.get("reserva/logout_user");
-      window.location.href = "reserva/login_user";
+      await axiosInstance.get("usuarios/logout_user");
+      window.location.href = "usuarios/login_user";
     } catch (error) {
       console.error("Error logging out:", error);
     }
