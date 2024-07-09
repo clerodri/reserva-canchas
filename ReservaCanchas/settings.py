@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os.path
-from .middleware import NoCacheMiddleware
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,12 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Reserva',
     'rest_framework',
+    'corsheaders',
   
 ]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-    'ReservaCanchas.middleware.NoCacheMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -58,18 +57,37 @@ MIDDLEWARE = [
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login/'
 ROOT_URLCONF = 'ReservaCanchas.urls'
+
+#CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:8000",
     "http://localhost:5173",
+    "http://localhost:3000",
     # Add your other allowed origins here
 ]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    "http://localhost:5173",
+    "http://localhost:3000",
+]
+CSRF_COOKIE_NAME = "csrftoken"
+
+
+# Session settings
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Use database-backed sessions
+
+
+#SESSION_COOKIE_SECURE = False  # Set to True in production
+#CSRF_COOKIE_SECURE = False  # Set to True in production
+#CSRF_USE_SESSIONS = True  # Store CSRF tokens in sessions instead of cookies
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR.joinpath('frontend'),BASE_DIR.joinpath('templates')],
+        'DIRS': [BASE_DIR.joinpath('frontend/dist'),BASE_DIR.joinpath('templates'),BASE_DIR.joinpath('Reserva/templates/authenticate')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -137,6 +155,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = (
     BASE_DIR.joinpath('frontend','dist'),
+    BASE_DIR.joinpath('Reserva','static'),
     )
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Default primary key field type

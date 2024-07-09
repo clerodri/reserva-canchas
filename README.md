@@ -1,14 +1,18 @@
 # Cooding Bootcamps - ESPOL
 
-# Webapp - Reservas de Canchas (Django + React Vite)
+# Fullstack - Reservas de Canchas (Django + React Vite)
 
-# STEPS TO RUN:
+# Pasos para levantar app:
 
-1. cd frontend -> npm run build
-2. copy all files from frontend/images folder to frontend/dist folder
-3. cd base directory execute -> python manage.py runserver
+1. In frontend folder execute -> npm run build
+2. In project folder execute -> python manage.py runserver
 
-## Login y Registro de usuario
+# Pasos de configurar:
+
+1. Crear objecto canchas desde la consola admin
+2. Crear objecto horario y asignar a objecto cancha.
+
+## Autenticacion de usuarios: Login, Logout y Registro de usuario
 
 ![image](https://github.com/clerodri/reserva-canchas/assets/72469484/b9fe06fd-c758-4b39-b099-6d2f077eb2e2)
 

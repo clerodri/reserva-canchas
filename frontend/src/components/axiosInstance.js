@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:8000", // Replace with your backend's base URL
+  baseURL: "http://127.0.0.1:8000/", // Replace with your backend's base URL
   timeout: 5000,
   headers: {
     "Content-Type": "application/json",

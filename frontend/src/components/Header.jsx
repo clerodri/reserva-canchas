@@ -3,7 +3,6 @@ import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import { useEffect, useState } from "react";
 import axiosInstance from "./axiosInstance";
-const BASE_URL = "http://localhost:8000";
 export function Header({ isModalOpen }) {
   const [time, setTime] = useState(new Date());
 
@@ -20,7 +19,7 @@ export function Header({ isModalOpen }) {
             <div className="flex flex-col">
               <img
                 alt=""
-                src="/static/coding_logo.png"
+                src="static/images/coding_logo.png"
                 width="300"
                 height="300"
                 className="d-inline-block align-top"
@@ -44,18 +43,8 @@ export function Header({ isModalOpen }) {
 function LogoutButton() {
   const handleLogout = async () => {
     try {
-      await axiosInstance.get("/logout_user");
-      // const response = await fetch(`${BASE_URL}/reserva/logout_user`, {
-      //   method: "GET",
-      //   credentials: "include", // Include cookies for CSRF protection if necessary
-      // });
-
-      // if (response.redirected) {
-      //   // Assuming the backend redirects to the login page
-      //   window.location.href = `${BASE_URL}/reserva/login_user`; // Adjust the route as needed
-      // } else {
-      //   console.error("Logout failed");
-      // }
+      await axiosInstance.get("reserva/logout_user");
+      window.location.href = "reserva/login_user";
     } catch (error) {
       console.error("Error logging out:", error);
     }

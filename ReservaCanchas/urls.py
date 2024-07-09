@@ -17,19 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from Reserva.views import *
-from django.shortcuts import render
-from django.contrib.auth import login
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
     path("reserva/", include('Reserva.urls')),
-    path("reserva/", include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     path("", RedirectView.as_view(url='/reserva/login_user', permanent=True)),
-    path('home', IndexView.as_view(), name='home'),
-   # path('login/', login_request, name='login'),
-    
+    path('home', index_view, name='home'),
+   
     path("getInfoCanchaById/<int:id_cancha>", getInfoCanchasById, name="getInfoCanchasById"),
     path("horarios/<int:id_cancha>", getHorariosByCancha, name="getHorariosByCancha"),
     path("horariosfull/<int:id_cancha>", getHorariosByCanchaFull, name="getHorariosByCanchaFull"),

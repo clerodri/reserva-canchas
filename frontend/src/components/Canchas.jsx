@@ -6,11 +6,13 @@ import { useCancha } from "../hooks/useCancha";
 import "../css/Cancha.css";
 import { Header } from "./Header";
 import Filters from "./Filters";
+import { useUser } from "../hooks/useUser";
 
 export function Canchas() {
   const { canchas } = useCancha();
+  const { currentUser } = useUser();
   const [showReserva, setShowReserva] = useState(false);
-
+  console.log(currentUser);
   return (
     <>
       <div
@@ -56,7 +58,7 @@ function CanchaItem({ onClickCancha, item }) {
           size="1.5rem"
         />
       </div>
-      <img src="static/cancha.png" alt="cancha dibujo" />
+      <img src="static/images/cancha.png" alt="cancha dibujo" />
       <div>
         <strong>{item.nombre}</strong>
       </div>

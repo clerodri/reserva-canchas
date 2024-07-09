@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AiFillDollarCircle } from "react-icons/ai";
+import axiosInstance from "./axiosInstance";
 const BASE_URL = "http://localhost:8000/info-reservas";
 function Reservas() {
   const [data, setData] = useState([]);
@@ -33,13 +34,8 @@ function Reservas() {
 
   const makePayRequest = async (payment) => {
     try {
-      const res = await fetch("http://localhost:8000/pagos", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payment),
-      });
-      const data = await res.json();
-      console.log(data);
+      const res = await axiosInstance.post("/pagos", JSON.stringify(payment));
+      console.log(res);
       console.log("Payment done!");
     } catch (error) {
       console.log("error making the post request", error);

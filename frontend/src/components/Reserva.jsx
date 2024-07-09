@@ -5,8 +5,11 @@ import "../css/Reserva.css";
 import { useCancha } from "../hooks/useCancha";
 import { ModalReserva } from "./ModalReserva";
 import axiosInstance from "./axiosInstance";
+import { useUser } from "../hooks/useUser";
+
 export function Reserva({ onClose }) {
   const { canchaSelected, fetchCanchas, fetchReservas } = useCancha();
+  const { currentUser } = useUser();
   console.log(canchaSelected);
   const [horarioId, setHorarioId] = useState(null);
 
@@ -29,11 +32,15 @@ export function Reserva({ onClose }) {
 
     const myReserva = {
       horario: canchaSelected.horarios[horarioId].id,
-      persona: 1,
+      persona: currentUser.id,
     };
 
     try {
-      await axiosInstance.post("/reservas", JSON.stringify(myReserva));
+      const res = await axiosInstance.post(
+        "/reservas",
+        JSON.stringify(myReserva)
+      );
+      console.log(res);
     } catch (error) {
       console.log("error post data reservas", error);
     }
@@ -61,7 +68,7 @@ export function Reserva({ onClose }) {
           </div>
           <img
             className="rounded-xl shadow-md"
-            src="/static/cancha.png"
+            src="static/images/cancha.png"
             alt="cancha dibujo"
           />
           <div>

@@ -15,8 +15,8 @@ from django.contrib.auth.forms import  AuthenticationForm
 from django.contrib import messages
 import logging
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView
+
+
 # Configure logging
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -27,26 +27,47 @@ logger = logging.getLogger(__name__)
 @login_required
 def current_user(request):
     user = request.user
+    try:
+        persona = Persona.objects.get(user=user)
+        persona_data = {
+            'id': persona.id,
+        }
+    except Persona.DoesNotExist:
+        persona_data = {
+            'id': None,
+        }
     return JsonResponse({
+        'is_authenticated': True,
         'username': user.username,
         'email': user.email,
+        **persona_data,  # Merging persona data into the response
     })
 
-class IndexView(LoginRequiredMixin, TemplateView):
-    template_name = 'dist/index.html'
+def check_authentication(request):
+    if request.user.is_authenticated:
+        return JsonResponse({'is_authenticated': True, 'username': request.user.username})
+    else:
+        return JsonResponse({'is_authenticated': False})
+
+# class IndexView(LoginRequiredMixin, TemplateView):
+# #  template_name = 'main.html'
+#     template_name = 'dist/index.html'
 
 @login_required
 def index_view(request):
-     return render(request, 'dist/index.html')
+     return render(request, 'index.html')
  #   return render(request, 'dist/index.html')
 
 
 def logout_request(request):
-    if not request.user.is_authenticated:
-      return redirect('login')
-    logout(request)
-    messages.info(request, "Has cerrado la sesion")
-    return redirect('reversa/login_user')
+    logger.info(f"USER : {request.user}")
+    if  request.user.is_authenticated:
+        logout(request)
+        messages.success(request, "Has cerrado la sesion")
+        return redirect('login')
+    else:
+        messages.success(request, "No has iniciado sesion")
+        return redirect('login')
 
 def login_request(request):
     if request.method == 'POST':
@@ -57,11 +78,16 @@ def login_request(request):
         user = authenticate(username=username, password=password)
         if user is not None:
           login(request, user)
+          logger.info(f"User {username} authenticated successfully")
           return redirect("home")
-        messages.error(request,"Error al authenticarse")
-      messages.error(request, form.errors)
+        else:
+          messages.error(request,"Error al authenticarse")
+          logger.info("Authentication failed: invalid username or password.")
+      else:
+        messages.error(request, form.errors)
+        logger.info(f"Form is not valid: {form.errors}")
     form = AuthenticationForm()    
-    return render(request, template_name='authenticate/login.html', 
+    return render(request, template_name='login.html', 
                   context={'login_form':form})
 
 def registro_request(request):
@@ -74,7 +100,7 @@ def registro_request(request):
     messages.error(request, form.errors)
 # Metodo no valido, retorna formulario vacio.    
   form = RegistroForm()
-  return render(request=request, template_name='authenticate/registro.html', 
+  return render(request=request, template_name='registro.html', 
                   context={'registro_form':form})
   
   
@@ -84,8 +110,8 @@ class ReservaCreateView(APIView):
         listReservas = Reserva.objects.all()
         serializer = ReservaSerializer(listReservas, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-      
-      
+
+
     def post(self, request):
         serializer = ReservaCreateSerializer(data=request.data)
         if serializer.is_valid():
