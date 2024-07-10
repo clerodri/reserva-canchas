@@ -16,13 +16,15 @@ export function Canchas() {
   return (
     <>
       <div
-        className={`flex px-10 py-4 ${showReserva ? "overflow-hidden" : ""}`}
+        className={`flex sm:p-0 md:px-10 md:py-4 ${
+          showReserva ? "overflow-hidden" : ""
+        }`}
       >
         <div className="flex flex-col">
           <Header isModalOpen={showReserva} />
           <Filters isModalOpen={showReserva} />
-          <main className="canchas px-48 gap-10">
-            <ul className="grid grid-cols-3 auto-rows-[300px]  gap-5">
+          <main className="canchas overflow-y-auto sm:max-h-48  md:max-h-fit md:justify-center">
+            <ul className="grid sm:grid-cols-2 lg:grid-cols-3 auto-rows-[300px]  sm:gap-10 sm:p-5">
               {canchas?.map((item, index) => (
                 <CanchaItem
                   key={item.id || index}
@@ -49,7 +51,7 @@ function CanchaItem({ onClickCancha, item }) {
   };
   return (
     <li
-      className="flex flex-col items-center gap-1 bg-slate-300 rounded-2xl p-2"
+      className="flex flex-col items-center gap-1 bg-slate-300 rounded-2xl p-2 sm:h-fit"
       onClick={test}
     >
       <div>

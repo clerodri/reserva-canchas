@@ -6,6 +6,7 @@ import { useCancha } from "../hooks/useCancha";
 import { ModalReserva } from "./ModalReserva";
 import axiosInstance from "./axiosInstance";
 import { useUser } from "../hooks/useUser";
+import { formatTime } from "../utils";
 
 export function Reserva({ onClose }) {
   const { canchaSelected, fetchCanchas, fetchReservas } = useCancha();
@@ -19,39 +20,29 @@ export function Reserva({ onClose }) {
   };
 
   const submitReserva = async () => {
-    console.log(horarioId);
     console.log(canchaSelected.horarios);
-    if (horarioId === null) {
-      console.log("id null");
-      return;
-    }
-    if (canchaSelected.horarios[horarioId].reserved === true) {
-      console.log("reserved");
-      return;
-    }
+    const horarioSelected = canchaSelected.horarios[horarioId];
+    if (horarioId === null) return;
+    if (horarioSelected.reserved) return;
 
     const myReserva = {
-      horario: canchaSelected.horarios[horarioId].id,
+      horario: horarioSelected.id,
       persona: currentUser.id,
     };
 
     try {
-      const res = await axiosInstance.post(
-        "reservas/reserva",
-        JSON.stringify(myReserva)
-      );
-      console.log(res);
+      await axiosInstance.post("reservas/reserva", JSON.stringify(myReserva));
     } catch (error) {
-      console.log("error post data reservas", error);
+      console.error("Error to save an reservas in DB", error);
     }
-    fetchCanchas();
-    fetchReservas();
-    onClose();
+    fetchCanchas(); //actualizo horario de las canchas
+    fetchReservas(); // actualizo lista de reservas
+    onClose(); //Cierro el modal de reserva
   };
   return (
     <div className="reserva">
       <div className="bg-white p-8 rounded-lg shadow-lg ">
-        <div className=" header-reserva">
+        <div className=" header-reserva  ">
           <div>
             <IoCloseCircleOutline size="2rem " onClick={onClose} />
           </div>
@@ -110,38 +101,34 @@ function Horarios({ horarios, isDisponible, horarioIdSelected }) {
   };
   return (
     <>
-      <ul className="flex flex-col space-y-2 bg-white p-7 ">
-        {horarios.map((item, idx) => (
-          <li
-            key={idx}
-            className={`${
-              isDisponible ? "items-center justify-between" : ""
-            }flex  gap-5 items-center justify-between horario-item ${
-              horarios[idx].reserved === true
-                ? "bg-red-500 cursor-not-allowed flex"
-                : "cursor-pointer"
-            } ${
-              itemSelected === idx
-                ? "border-green-600 bg-green-50"
-                : "border-transparent"
-            }`}
-            onClick={() => handleSelection(idx)}
-          >
-            {`${formatTime(item.hora_inicio)} - ${formatTime(item.hora_fin)}`}
-            {horarios[idx].reserved ? (
-              <ModalReserva idxSelected={itemSelected} />
-            ) : null}
-          </li>
-        ))}
-      </ul>
+      <div className="sm:max-h-60  overflow-y-auto  bg-white sm:py-2">
+        <ul className="flex flex-col space-y-2 bg-white p-7 ">
+          {horarios.map((item, idx) => (
+            <li
+              key={idx}
+              className={`${
+                isDisponible ? "items-center justify-between" : ""
+              }flex  gap-5 items-center justify-between horario-item ${
+                horarios[idx].reserved === true
+                  ? "bg-red-500 cursor-not-allowed flex"
+                  : "cursor-pointer"
+              } ${
+                itemSelected === idx
+                  ? "border-green-600 bg-green-50"
+                  : "border-transparent"
+              }`}
+              onClick={() => handleSelection(idx)}
+            >
+              {`${formatTime(item.hora_inicio)} - ${formatTime(item.hora_fin)}`}
+              {horarios[idx].reserved ? (
+                <ModalReserva idxSelected={itemSelected} />
+              ) : null}
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }
 
-function formatTime(dateString) {
-  const date = new Date(dateString);
-  const hours = String(date.getUTCHours()).padStart(2, "0");
-  const minutes = String(date.getUTCMinutes()).padStart(2, "0");
-  return `${hours}:${minutes}`;
-}
 export default Reserva;

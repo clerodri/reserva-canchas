@@ -11,25 +11,29 @@ export function Header({ isModalOpen }) {
 
     return () => clearInterval(interval);
   }, []);
+  //${isModalOpen ? "w-fit p-3" : "w-screen  p-3"}
   return (
-    <header className={`${isModalOpen ? "w-fit p-3" : "w-screen  p-3"} `}>
+    <header className={`           `}>
       <Navbar>
         <Container>
-          <Navbar.Brand href="#Home" className="flex gap-5 justify-around">
-            <div className="flex flex-col">
+          <Navbar.Brand
+            href="#Home"
+            className="flex mb:flex-col mb:mx-2 mb:items-center mb:gap-5 mb:m-2 md:flex-row   md:justify-center lg:justify-around lg:px-4"
+          >
+            <div className="flex flex-col ">
               <img
                 alt=""
                 src="static/images/coding_logo.png"
                 width="300"
                 height="300"
                 className="d-inline-block align-top"
-              />{" "}
-              <h1 className="text-5xl font-mono sm:ms-16 ">
+              />
+              <h1 className=" mb:text-4xl md:text-5xl  font-mono  ">
                 Reservas de Canchas
               </h1>
             </div>
-            <div className="border-4 p-1 border-gray-300 w-fit h-fit">
-              <h2 className="text-7xl text-green-600 m-4">
+            <div className="mb:hidden lg:block border-4 p-1 border-gray-300 w-fit h-fit">
+              <h2 className="  xl:text-7xl lg:text-5xl text-green-600 m-4">
                 {time.toLocaleTimeString()}
               </h2>
             </div>
@@ -51,7 +55,7 @@ function LogoutButton() {
   };
   return (
     <>
-      <div>
+      <div className="">
         <button
           onClick={handleLogout}
           className="bg-red-500 text-white px-4 py-2 rounded-xl"

@@ -39,97 +39,101 @@ export function Filters({ isModalOpen }) {
   };
   return (
     <>
-      <section
-        className={`flex w-fit flex-col ${isModalOpen ? "px-44" : "px-72"}`}
-      >
-        <div className="  flex gap-5 justify-between">
-          <div onClick={() => setOrderModal(true)}>
-            <FaCalendarAlt
-              size="3rem"
-              color="green"
-              className="cursor-pointer"
-            />
+      <section className={`flex flex-col w-screen items-center `}>
+        <div className="flex  sm:flex-col sm:gap-5 md:flex-row ">
+          <div className="sm:flex sm:items-center sm:justify-around md:gap-5">
+            <div onClick={() => setOrderModal(true)}>
+              <FaCalendarAlt
+                size="3rem"
+                color="green"
+                className="cursor-pointer"
+              />
+              <span>Order</span>
+            </div>
 
-            <span>Order</span>
+            <div className="sm:flex sm:gap-2">
+              <span>Clear</span>
+              <GrClearOption
+                size="2rem "
+                color="green"
+                onClick={clear}
+                className="cursor-pointer"
+              />
+            </div>
+          </div>
+          <div>
+            <form id="timeForm" className=" flex sm:px-5 sm:gap-3">
+              <div className="mb-4">
+                <label
+                  htmlFor="inicio"
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                >
+                  Hora Inicio (hh:mm):
+                </label>
+                <input
+                  id="inicio"
+                  type="text"
+                  {...register("inicio", {
+                    pattern: {
+                      value: timePattern,
+                      message: "Invalid time format (hh:mm)",
+                    },
+                    required: "Ingrese Hora",
+                  })}
+                  className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                    errors.inicio ? "border-red-500" : ""
+                  }`}
+                />
+                {errors.inicio && (
+                  <p className="text-red-500 text-xs italic">
+                    {errors.inicio.message}
+                  </p>
+                )}
+              </div>
+
+              <div className="mb-4">
+                <label
+                  htmlFor="fin"
+                  className="block text-gray-700 text-sm font-bold mb-2"
+                >
+                  Hora Fin (hh:mm):
+                </label>
+                <input
+                  id="fin"
+                  type="text"
+                  {...register("fin", {
+                    pattern: {
+                      value: timePattern,
+                      message: "Invalid time format (hh:mm)",
+                    },
+                    required: "Ingrese Hora",
+                  })}
+                  className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                    errors.fin ? "border-red-500" : ""
+                  }`}
+                />
+                {errors.fin && (
+                  <p className="text-red-500 text-xs italic">
+                    {errors.fin.message}
+                  </p>
+                )}
+              </div>
+              <div>
+                <ImFilter
+                  onClick={handleSubmit(onSubmit)}
+                  size="3rem"
+                  color="green"
+                  className="cursor-pointer"
+                />
+                <span>Filter</span>
+              </div>
+            </form>
           </div>
           <OrderModal
             isOpen={orderModal}
             onClose={() => setOrderModal(false)}
             onSelectOption={handleSelectOption}
           />
-          <form id="timeForm" className="flex gap-5">
-            <div className="mb-4">
-              <label
-                htmlFor="inicio"
-                className="block text-gray-700 text-sm font-bold mb-2"
-              >
-                Hora Inicio (hh:mm):
-              </label>
-              <input
-                id="inicio"
-                type="text"
-                {...register("inicio", {
-                  pattern: {
-                    value: timePattern,
-                    message: "Invalid time format (hh:mm)",
-                  },
-                  required: "Ingrese Hora",
-                })}
-                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
-                  errors.inicio ? "border-red-500" : ""
-                }`}
-              />
-              {errors.inicio && (
-                <p className="text-red-500 text-xs italic">
-                  {errors.inicio.message}
-                </p>
-              )}
-            </div>
-            <span>Clear</span>
-            <GrClearOption
-              size="2rem"
-              color="green"
-              onClick={clear}
-              className="cursor-pointer"
-            />
-
-            <div className="mb-4">
-              <label
-                htmlFor="fin"
-                className="block text-gray-700 text-sm font-bold mb-2"
-              >
-                Hora Fin (hh:mm):
-              </label>
-              <input
-                id="fin"
-                type="text"
-                {...register("fin", {
-                  pattern: {
-                    value: timePattern,
-                    message: "Invalid time format (hh:mm)",
-                  },
-                  required: "Ingrese Hora",
-                })}
-                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
-                  errors.fin ? "border-red-500" : ""
-                }`}
-              />
-              {errors.fin && (
-                <p className="text-red-500 text-xs italic">
-                  {errors.fin.message}
-                </p>
-              )}
-            </div>
-            <div>
-              <ImFilter
-                onClick={handleSubmit(onSubmit)}
-                size="3rem"
-                color="green"
-                className="cursor-pointer"
-              />
-              <span>Filter</span>
-            </div>
-          </form>
         </div>
         {msg && (
           <div className="mx-14 text-2xl font-serif font-semibold ">

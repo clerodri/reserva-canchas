@@ -2,6 +2,7 @@ import { React, useEffect, useState } from "react";
 import { FaCircleInfo } from "react-icons/fa6";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { useCancha } from "../hooks/useCancha";
+import { formatTime } from "../utils";
 
 const BASE_URL = "http://localhost:8000/reservas/user";
 export function ModalReserva({ idxSelected }) {
@@ -66,9 +67,9 @@ function ModalInfo({ onClose, idxSelected }) {
   );
 }
 
-function formatTime(dateString) {
-  const date = new Date(dateString);
-  const hours = String(date.getUTCHours()).padStart(2, "0");
-  const minutes = String(date.getUTCMinutes()).padStart(2, "0");
-  return `${hours}:${minutes}`;
-}
+// function formatTime(dateString) {
+//   const date = new Date(dateString);
+//   const hours = String(date.getUTCHours()).padStart(2, "0");
+//   const minutes = String(date.getUTCMinutes()).padStart(2, "0");
+//   return `${hours}:${minutes}`;
+// }

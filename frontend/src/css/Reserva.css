@@ -1,9 +1,9 @@
 .reserva {
-  @apply fixed inset-0 flex items-center  justify-end mx-0 bg-black bg-opacity-50 z-50 backdrop-blur-sm;
+  @apply fixed inset-0 flex items-center  justify-end mx-0  bg-black bg-opacity-50 z-50 backdrop-blur-sm;
 }
 
 .header-reserva {
-  @apply flex items-center justify-between;
+  @apply flex items-center justify-between mt-0 2xl:mt-0;
 }
 .body-reserva {
   @apply text-3xl text-center font-thin;

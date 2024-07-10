@@ -4,7 +4,7 @@ function Footer() {
   return (
     <>
       <div className="flex fixed inset-x-0 bottom-0  items-center justify-center">
-        <div className="flex h-1/5 w-2/5  rounded-t-3xl bg-gray-500 items-center justify-center gap-20 text-black text-4xl p-2 mt-5">
+        <div className="flex mb:text-xl  sm:text-3xl mb:gap-4 mb:p-3   md:gap-10 text-black md:text-4xl rounded-t-3xl bg-gray-500 items-center justify-center  ">
           <NavLink
             to="/pagos"
             className={({ isActive }) =>
