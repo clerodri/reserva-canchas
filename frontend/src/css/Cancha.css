@@ -1,0 +1,7 @@
+.canchas {
+  @apply flex justify-between;
+}
+
+.canchas img {
+  @apply rounded m-1 h-auto w-auto;
+}

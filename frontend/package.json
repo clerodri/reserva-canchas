@@ -1,0 +1,39 @@
+{
+  "name": "reserva-canchas",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "bootstrap": "^5.3.3",
+    "date-fns": "^3.6.0",
+    "dotenv": "^16.4.5",
+    "eslint": "^8.57.0",
+    "postcss": "^8.4.38",
+    "react-bootstrap": "^2.10.3",
+    "react-icons": "^5.2.1",
+    "react-router-dom": "^6.24.1",
+    "standard": "^17.1.0",
+    "tailwindcss": "^3.4.4",
+    "vite": "^5.3.1"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "4.3.1",
+    "axios": "^1.7.2",
+    "js-cookie": "^3.0.5",
+    "react": "^18.3.1",
+    "react-date-object": "^2.1.9",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.52.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/standard/eslintrc.json"
+    ]
+  }
+}

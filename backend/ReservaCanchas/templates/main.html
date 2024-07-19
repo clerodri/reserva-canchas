@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main</title>
+  </head>
+  <body>
+    <div>
+      {% if user.is_authenticated %}
+      <h1>Welcome, {{ user.username }}!</h1>
+      <a href="{% url 'logout' %}">Logout</a>
+      {% else %}
+      <p>You are not logged in.</p>
+      <a href="{% url 'login' %}">Login</a>
+      {% endif %}
+    </div>
+    <h1>Reservas de Canchas de Tennis By RRCC</h1>
+    <p>fabricando fantasias!! y tu te las ganans!!</p>
+  </body>
+</html>
