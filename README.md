@@ -1,4 +1,4 @@
-# Cooding Bootcamps - ESPOL - RONALDO RODRIGUEZ
+# Cooding Bootcamps - ESPOL 
 
 # Fullstack - Reservas de Canchas (Django + React Vite)
 
